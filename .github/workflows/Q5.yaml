@@ -1,0 +1,21 @@
+name: Q5
+on: [push]
+permissions:
+  contents: write
+jobs:
+  archive-q5:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Create archive file
+        run: |
+          DATE=$(date +'%d-%m-%Y')
+          echo "Nom : Félix le gars" > Q5_archive_${DATE}.txt
+          cat Q5.java >> Q5_archive_${DATE}.txt
+      - name: Commit and push
+        run: |
+          git config --global user.name "Vocif3r"
+          git config --global user.email "felixlgrs.dev@gmail.com"
+          git add Q5_archive_*.txt
+          git commit -m "Ajout de Q5_archive_date"
+          git push
