@@ -1,0 +1,28 @@
+name: Q6
+on: [push]
+permissions:
+  contents: write
+jobs:
+  archive-q6:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Create archive and diff
+        run: |
+          DATE=$(date +'%d-%m-%Y-%H%M%S')
+          echo "Nom : Félix le gars" > Q6_archive_${DATE}.txt
+          cat Q6.java >> Q6_archive_${DATE}.txt
+          echo "" >> Q6_archive_${DATE}.txt
+          echo "Statistiques du fichier :" >> Q6_archive_${DATE}.txt
+          wc Q6.java >> Q6_archive_${DATE}.txt
+
+          PREV=$(ls Q6_archive_*.txt | tail -n 2 | head -n 1 || true)
+          LAST=$(ls Q6_archive_*.txt | tail -n 1)
+          if [ -n "$PREV" ]; then diff "$PREV" "$LAST" > Q6_différences.txt || true; fi
+      - name: Commit and push
+        run: |
+          git config --global user.name "Vocif3r"
+          git config --global user.email "felixlgrs.dev@gmail.com"
+          git add Q6_archive_*.txt Q6_différences.txt || true
+          git commit -m "Ajout Q6 archive et différences" || true
+          git push
