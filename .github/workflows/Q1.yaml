@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Copy README content
+      - name: Copy TOTO content
         run: cp TOTO.txt Q1_archive_TOTO.txt
       - name: Commit and push
         run: |
