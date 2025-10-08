@@ -12,6 +12,7 @@ jobs:
           echo "Nom : Félix le gars" > Q2_archive_TOTO.txt
           date >> Q2_archive_TOTO.txt
           cat TOTO.txt >> Q2_archive_TOTO.txt
+          echo "" >> Q2_archive_TOTO.txt
           echo "Taille de TOTO.txt : $(wc -c < TOTO.txt) octets" >> Q2_archive_TOTO.txt
       - name: Commit and push
         run: |
