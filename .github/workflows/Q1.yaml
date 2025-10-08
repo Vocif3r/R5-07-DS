@@ -3,7 +3,7 @@ on: [push]
 permissions:
   contents: write
 jobs:
-  copy-readme:
+  copy-TOTO:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
