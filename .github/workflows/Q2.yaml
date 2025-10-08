@@ -3,7 +3,7 @@ on: [push]
 permissions:
   contents: write
 jobs:
-  archive-readme:
+  archive-toto:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
