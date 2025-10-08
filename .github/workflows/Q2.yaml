@@ -1,0 +1,22 @@
+name: Q2
+on: [push]
+permissions:
+  contents: write
+jobs:
+  archive-readme:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Create archive file
+        run: |
+          echo "Nom : Félix le gars" > Q2_archive_TOTO.txt
+          date >> Q2_archive_TOTO.txt
+          cat TOTO.txt >> Q2_archive_TOTO.txt
+          echo "Taille de TOTO.txt : $(wc -c < TOTO.txt) octets" >> Q2_archive_TOTO.txt
+      - name: Commit and push
+        run: |
+          git config --global user.name "Vocif3r"
+          git config --global user.email "felixlgrs.dev@gmail.com"
+          git add Q2_archive_TOTO.txt
+          git commit -m "Ajout de Q2_archive_TOTO.txt"
+          git push
