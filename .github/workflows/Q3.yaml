@@ -1,0 +1,20 @@
+name: Q3
+on: [push]
+permissions:
+  contents: write
+jobs:
+  archive-java:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Create archive file
+        run: |
+          echo "Nom : Félix le gars" > Q3_archive_java.txt
+          cat Q3.java >> Q3_archive_java.txt
+      - name: Commit and push
+        run: |
+          git config --global user.name "Vocif3r"
+          git config --global user.email "felixlgrs.dev@gmail.com"
+          git add Q3_archive_java.txt
+          git commit -m "Ajout de Q3_archive_java.txt"
+          git push
