@@ -1,0 +1,18 @@
+name: Q1
+on: [push]
+permissions:
+  contents: write
+jobs:
+  copy-readme:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Copy README content
+        run: cp TOTO.txt Q1_archive_TOTO.txt
+      - name: Commit and push
+        run: |
+          git config --global user.name "Vocifer"
+          git config --global user.email "felixlgrs.dev@gmail.com"
+          git add Q1_archive_TOTO.txt
+          git commit -m "Ajout de Q1_archive_TOTO.txt"
+          git push
