@@ -10,7 +10,7 @@ public class Q5
 			for (int j = 1; j <= i; j++)
 			{
 				s += " ";
-				s += j;
+				s += "x";
 			}
 			System.out.println(s);
 		}
